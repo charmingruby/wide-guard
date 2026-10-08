@@ -6,6 +6,5 @@ labels:
       app.kubernetes.io/name: wide-guard
       app.kubernetes.io/managed-by: kustomize
 resources:
-  - v1-destination-rule.yaml
-  - v2-destination-rule.yaml
-  - http-route.yaml
+  - destination-rule.yaml
+  - mtls.yaml

@@ -1,11 +1,10 @@
 # yaml-language-server: $schema=none
-namespace: cell-a
-namePrefix: cell-a-
+namespace: pinglet-b
+namePrefix: pinglet-b-
 labels:
   - pairs:
-      app.kubernetes.io/name: zygarde
+      app.kubernetes.io/name: wide-guard
       app.kubernetes.io/managed-by: kustomize
 resources:
-  - v1-destination-rule.yaml
-  - v2-destination-rule.yaml
-  - http-route.yaml
+  - destination-rule.yaml
+  - mtls.yaml
