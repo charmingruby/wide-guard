@@ -1,0 +1,7 @@
+# yaml-language-server: $schema=none
+labels:
+  - pairs:
+      app.kubernetes.io/name: wide-guard
+      app.kubernetes.io/managed-by: kustomize
+resources:
+  - mtls.yaml
