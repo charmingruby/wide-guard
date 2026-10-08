@@ -1,5 +1,4 @@
 # yaml-language-server: $schema=none
 resources:
-  - waypoint.yaml
   - pinglet-a
   - pinglet-b

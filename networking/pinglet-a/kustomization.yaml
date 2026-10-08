@@ -8,3 +8,4 @@ labels:
 resources:
   - destination-rule.yaml
   - mtls.yaml
+  - waypoint.yaml
