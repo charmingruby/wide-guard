@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=none
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: pinglet-b
+  labels:
+    istio.io/dataplane-mode: ambient
+    istio.io/use-waypoint: waypoint
+    istio.io/use-waypoint-namespace: default

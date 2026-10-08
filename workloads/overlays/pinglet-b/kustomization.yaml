@@ -1,0 +1,23 @@
+# yaml-language-server: $schema=none
+namespace: pinglet-b
+namePrefix: pinglet-b-
+labels:
+  - pairs:
+      app.kubernetes.io/instance: pinglet-b
+      app.kubernetes.io/version: v1
+    includeSelectors: true
+
+resources:
+  - ../../base
+
+configMapGenerator:
+  - name: config
+    literals:
+      - PORT=4000
+      - ID=b1
+      - IS_AVAILABLE=true
+      - PING_DELAY_MS=0
+      - PONG_DELAY_MS=0
+      - PING_FAILURE_RATE=0
+      - PONG_FAILURE_RATE=0
+      - INJECT_STATUS_CODE=500

@@ -1,0 +1,10 @@
+# yaml-language-server: $schema=none
+namespace: pinglet-b
+namePrefix: pinglet-b-
+labels:
+  - pairs:
+      app.kubernetes.io/name: wide-guard
+      app.kubernetes.io/managed-by: kustomize
+resources:
+  - destination-rule.yaml
+  - mtls.yaml
