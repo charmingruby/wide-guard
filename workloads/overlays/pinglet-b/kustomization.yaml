@@ -1,18 +1,19 @@
 # yaml-language-server: $schema=none
-namespace: cell-a
-namePrefix: cell-a-v2-
+namespace: pinglet-b
+namePrefix: pinglet-b-
 labels:
   - pairs:
-      app.kubernetes.io/instance: cell-a
-      app.kubernetes.io/version: V2
+      app.kubernetes.io/instance: pinglet-b
+      app.kubernetes.io/version: v1
     includeSelectors: true
 
 resources:
   - ../../base
 
+# TODO
 configMapGenerator:
   - name: config
     literals:
       - PORT=4000
-      - CELL_ID=a2
+      - CELL_ID=a1
       - IS_AVAILABLE=true

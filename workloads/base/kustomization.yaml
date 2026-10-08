@@ -1,7 +1,7 @@
 # yaml-language-server: $schema=none
 labels:
   - pairs:
-      app.kubernetes.io/name: zygarde
+      app.kubernetes.io/name: wide-guard
       app.kubernetes.io/managed-by: kustomize
       app.kubernetes.io/component: api
     includeSelectors: true

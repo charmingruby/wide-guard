@@ -1,2 +1,3 @@
 resources:
-  - cell-a.yaml
+  - pinglet-a.yaml
+  - pinglet-b.yaml

@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: api
-          image: charmingruby/cell:latest
+          image: charmingruby/pinglet:latest
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 4000

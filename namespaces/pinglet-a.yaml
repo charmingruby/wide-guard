@@ -2,7 +2,7 @@
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: cell-a
+  name: pinglet-a
   labels:
     istio.io/dataplane-mode: ambient
     istio.io/use-waypoint: waypoint
