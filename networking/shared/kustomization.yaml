@@ -5,3 +5,4 @@ labels:
       app.kubernetes.io/managed-by: kustomize
 resources:
   - mtls.yaml
+  - authorization-policy.yaml
