@@ -1,6 +1,5 @@
 # yaml-language-server: $schema=none
 namespace: pinglet-b
-namePrefix: pinglet-
 labels:
   - pairs:
       app.kubernetes.io/instance: pinglet
