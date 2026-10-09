@@ -48,7 +48,7 @@ tasks:
     cmd: kubectl run -it fortio -n pinglet-a --rm --image=fortio/fortio -- load -c 32 -qps 8000 -t 60s http://pinglet-a-svc.pinglet-a/api/healthz
   load-test-ping:
     desc: "Runs a pingpong load test to check o11y on Kiali"
-    cmd: kubectl run -it fortio -n pinglet-{{.from}} --rm --image=fortio/fortio -- load -c 32 -qps 8000 -t 60s -content-type "application/json" -payload '{"url":"http://pinglet-{{.to}}-svc.pinglet-{{.to}}.svc.cluster.local/api","path":"/pong"}' http://pinglet-{{.from}}-svc.pinglet-{{.from}}.svc.cluster.local/api/ping
+    cmd: kubectl run -it fortio -n pinglet-{{.from}} --rm --image=fortio/fortio -- load -c 32 -qps 8000 -t 60s -content-type "application/json" -payload '{"url":"http://pinglet-svc.pinglet-{{.to}}.svc.cluster.local/api","path":"/pong"}' http://pinglet-svc.pinglet-{{.from}}.svc.cluster.local/api/ping
   default:
     desc: "Scaffolds cluster, applying all needed infrastructure and manifests"
     cmds:
@@ -56,7 +56,7 @@ tasks:
       - task: install-k8s-gateway-crds
       - task: install-istio
       - task: apply
-  restart:
+  reset:
     desc: "Recreates and scaffolds the cluster"
     cmds:
       - task: delete-cluster
@@ -69,4 +69,4 @@ tasks:
     cmd: "kubectl port-forward svc/kiali 3001:20001 -n istio-system"
   pf-pinglet:
     desc: "Port forwards a Pinglet service"
-    cmd: "kubectl port-forward svc/pinglet-{{.id}}-svc {{.port}}:80 -n pinglet-{{.id}}"
+    cmd: "kubectl port-forward svc/pinglet-svc {{.port}}:80 -n pinglet-{{.id}}"

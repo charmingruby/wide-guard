@@ -5,7 +5,7 @@ metadata:
   labels:
     app.kubernetes.io/version: V1
 spec:
-  host: pinglet-b-svc.pinglet-b.svc.cluster.local
+  host: pinglet-svc.pinglet-b.svc.cluster.local
   trafficPolicy:
     loadBalancer:
       simple: LEAST_CONN

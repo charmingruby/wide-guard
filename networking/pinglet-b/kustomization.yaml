@@ -1,6 +1,6 @@
 # yaml-language-server: $schema=none
 namespace: pinglet-b
-namePrefix: pinglet-b-
+namePrefix: pinglet-
 labels:
   - pairs:
       app.kubernetes.io/name: wide-guard

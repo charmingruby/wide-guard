@@ -1,10 +1,10 @@
 # yaml-language-server: $schema=none
 namespace: pinglet-b
-namePrefix: pinglet-b-
+namePrefix: pinglet-
 labels:
   - pairs:
-      app.kubernetes.io/instance: pinglet-b
-      app.kubernetes.io/version: v1
+      app.kubernetes.io/instance: pinglet
+      app.kubernetes.io/version: a
     includeSelectors: true
 
 resources:
