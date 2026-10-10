@@ -1,6 +1,5 @@
 # yaml-language-server: $schema=none
 namespace: pinglet-b
-namePrefix: pinglet-
 labels:
   - pairs:
       app.kubernetes.io/name: wide-guard
@@ -8,3 +7,4 @@ labels:
 resources:
   - destination-rule.yaml
   - waypoint.yaml
+  - authorization-policy.yaml

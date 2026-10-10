@@ -5,4 +5,4 @@ metadata:
   name: pinglet-b
   labels:
     istio.io/dataplane-mode: ambient
-    istio.io/use-waypoint: pinglet-b-waypoint
+    istio.io/use-waypoint: pinglet-waypoint

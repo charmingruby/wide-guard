@@ -15,6 +15,7 @@ spec:
     metadata:
       labels: {}
     spec:
+      serviceAccountName: pinglet
       containers:
         - name: api
           image: charmingruby/pinglet:latest

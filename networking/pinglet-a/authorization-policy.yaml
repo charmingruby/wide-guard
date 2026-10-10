@@ -1,0 +1,19 @@
+apiVersion: security.istio.io/v1
+kind: AuthorizationPolicy
+metadata:
+  name: allow-same-namespace
+spec:
+  targetRefs:
+    - kind: Gateway
+      group: gateway.networking.k8s.io
+      name: pinglet-waypoint
+  action: ALLOW
+  rules:
+    - from:
+        - source:
+            serviceAccounts:
+              - pinglet-a/pinglet
+      to:
+        - operation:
+            ports:
+              - "80"
