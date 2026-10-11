@@ -1,0 +1,24 @@
+# yaml-language-server: $schema=none
+namespace: sink
+labels:
+  - pairs:
+      app.kubernetes.io/instance: pinglet
+      app.kubernetes.io/version: sink
+    includeSelectors: true
+
+resources:
+  - ../../base
+
+configMapGenerator:
+  - name: config
+    literals:
+      - PORT=4000
+      - ID=sink1
+      - IS_AVAILABLE=true
+      - PING_DELAY_MS=0
+      - PONG_DELAY_MS=0
+      - PING_FAILURE_RATE=0
+      - PONG_FAILURE_RATE=0
+      - INJECT_STATUS_CODE=500
+      - MAX_CHAIN_DEPTH=10
+      - HOP_TIMEOUT_MS=5000

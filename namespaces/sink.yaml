@@ -1,0 +1,8 @@
+# yaml-language-server: $schema=none
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: sink
+  labels:
+    istio.io/dataplane-mode: ambient
+    istio.io/use-waypoint: sink-waypoint

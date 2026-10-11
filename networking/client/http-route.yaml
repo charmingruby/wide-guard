@@ -32,6 +32,26 @@ spec:
     - matches:
         - path:
             type: Exact
+            value: /api/chain
+          method: POST
+      timeouts:
+        request: 10s
+      backendRefs:
+        - name: pinglet
+          port: 80
+    - matches:
+        - path:
+            type: Exact
+            value: /api/relay
+          method: POST
+      timeouts:
+        request: 10s
+      backendRefs:
+        - name: pinglet
+          port: 80
+    - matches:
+        - path:
+            type: Exact
             value: /api/healthz
           method: GET
       timeouts:

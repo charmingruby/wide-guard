@@ -2,3 +2,4 @@
 resources:
   - overlays/client
   - overlays/server
+  - overlays/sink

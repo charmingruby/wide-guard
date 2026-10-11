@@ -3,3 +3,4 @@ resources:
   - shared
   - client
   - server
+  - sink

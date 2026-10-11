@@ -1,0 +1,24 @@
+apiVersion: networking.istio.io/v1
+kind: DestinationRule
+metadata:
+  name: dr
+  labels:
+    app.kubernetes.io/version: V1
+spec:
+  host: pinglet.sink.svc.cluster.local
+  trafficPolicy:
+    loadBalancer:
+      simple: LEAST_CONN
+    outlierDetection:
+      consecutiveGatewayErrors: 20
+      interval: 10s
+      baseEjectionTime: 30s
+      maxEjectionPercent: 50
+    connectionPool:
+      tcp:
+        maxConnections: 100
+      http:
+        http1MaxPendingRequests: 100
+        maxRequestsPerConnection: 1000
+    tls:
+      mode: ISTIO_MUTUAL

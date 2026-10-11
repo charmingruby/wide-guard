@@ -1,3 +1,4 @@
 resources:
   - client.yaml
   - server.yaml
+  - sink.yaml

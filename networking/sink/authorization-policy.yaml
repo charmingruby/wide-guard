@@ -1,0 +1,65 @@
+apiVersion: security.istio.io/v1
+kind: AuthorizationPolicy
+metadata:
+  name: allow-same-namespace
+spec:
+  targetRefs:
+    - kind: Gateway
+      group: gateway.networking.k8s.io
+      name: sink-waypoint
+  action: ALLOW
+  rules:
+    - from:
+        - source:
+            serviceAccounts: [sink/pinglet]
+      to:
+        - operation:
+            ports: ["80"]
+---
+apiVersion: security.istio.io/v1
+kind: AuthorizationPolicy
+metadata:
+  name: allow-from-client
+spec:
+  targetRefs:
+    - kind: Gateway
+      group: gateway.networking.k8s.io
+      name: sink-waypoint
+  action: ALLOW
+  rules:
+    - from:
+        - source:
+            serviceAccounts: [client/pinglet]
+      to:
+        - operation:
+            methods:
+              - GET
+              - DELETE
+              - PATCH
+              - POST
+              - PUT
+            paths: [/api/*]
+            ports: ["80"]
+---
+# A chain hop is forwarded by the previous hop's pod, so the request
+# arriving at sink carries the server workload identity, not client's.
+# Without this, client -> server -> sink fails at the second hop with 403.
+apiVersion: security.istio.io/v1
+kind: AuthorizationPolicy
+metadata:
+  name: allow-from-server
+spec:
+  targetRefs:
+    - kind: Gateway
+      group: gateway.networking.k8s.io
+      name: sink-waypoint
+  action: ALLOW
+  rules:
+    - from:
+        - source:
+            serviceAccounts: [server/pinglet]
+      to:
+        - operation:
+            methods: [POST]
+            paths: [/api/relay]
+            ports: ["80"]

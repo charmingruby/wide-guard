@@ -49,6 +49,9 @@ tasks:
   load-test-ping:
     desc: "Runs a pingpong load test to check o11y on Kiali"
     cmd: kubectl run -it fortio -n {{.from}} --rm --image=fortio/fortio --overrides='{"spec":{"serviceAccountName":"pinglet"}}' -- load -c 32 -qps 8000 -t 60s -content-type "application/json" -payload '{"to":"http://pinglet.{{.to}}.svc.cluster.local/api/pong"}' http://pinglet.{{.from}}.svc.cluster.local/api/ping
+  load-test-chain:
+    desc: "Runs a chain load test client -> server -> sink to check o11y on Kiali"
+    cmd: kubectl run -it fortio -n client --rm --image=fortio/fortio --overrides='{"spec":{"serviceAccountName":"pinglet"}}' -- load -c 32 -qps 8000 -t 60s -content-type "application/json" -payload '{"chain":["http://pinglet.server.svc.cluster.local/api/relay","http://pinglet.sink.svc.cluster.local/api/relay"]}' http://pinglet.client.svc.cluster.local/api/chain
   default:
     desc: "Scaffolds cluster, applying all needed infrastructure and manifests"
     cmds:

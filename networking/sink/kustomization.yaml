@@ -1,0 +1,11 @@
+# yaml-language-server: $schema=none
+namespace: sink
+labels:
+  - pairs:
+      app.kubernetes.io/name: wide-guard
+      app.kubernetes.io/managed-by: kustomize
+resources:
+  - destination-rule.yaml
+  - waypoint.yaml
+  - authorization-policy.yaml
+  - http-route.yaml
