@@ -32,18 +32,18 @@ spec:
             serviceAccounts: [client/pinglet]
       to:
         - operation:
-            methods:
-              - GET
-              - DELETE
-              - PATCH
-              - POST
-              - PUT
-            paths: [/api/*]
+            methods: [POST]
+            paths: [/api/pong]
+            ports: ["80"]
+    - from:
+        - source:
+            serviceAccounts: [client/pinglet]
+      to:
+        - operation:
+            methods: [POST]
+            paths: [/api/relay]
             ports: ["80"]
 ---
-# A chain hop is forwarded by the previous hop's pod, so the request
-# arriving at sink carries the server workload identity, not client's.
-# Without this, client -> server -> sink fails at the second hop with 403.
 apiVersion: security.istio.io/v1
 kind: AuthorizationPolicy
 metadata:
@@ -62,4 +62,12 @@ spec:
         - operation:
             methods: [POST]
             paths: [/api/relay]
+            ports: ["80"]
+    - from:
+        - source:
+            serviceAccounts: [server/pinglet]
+      to:
+        - operation:
+            methods: [POST]
+            paths: [/api/pong]
             ports: ["80"]
