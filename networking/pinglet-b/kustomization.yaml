@@ -8,3 +8,4 @@ resources:
   - destination-rule.yaml
   - waypoint.yaml
   - authorization-policy.yaml
+  - http-route.yaml

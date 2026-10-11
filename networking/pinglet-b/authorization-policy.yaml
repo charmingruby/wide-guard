@@ -11,12 +11,10 @@ spec:
   rules:
     - from:
         - source:
-            serviceAccounts:
-              - pinglet-b/pinglet
+            serviceAccounts: [pinglet-b/pinglet]
       to:
         - operation:
-            ports:
-              - "80"
+            ports: ["80"]
 ---
 apiVersion: security.istio.io/v1
 kind: AuthorizationPolicy
@@ -31,9 +29,14 @@ spec:
   rules:
     - from:
         - source:
-            serviceAccounts:
-              - pinglet-a/pinglet
+            serviceAccounts: [pinglet-a/pinglet]
       to:
         - operation:
-            ports:
-              - "80"
+            methods:
+              - GET
+              - DELETE
+              - PATCH
+              - POST
+              - PUT
+            paths: [/api/*]
+            ports: ["80"]

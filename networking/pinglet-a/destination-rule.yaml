@@ -10,9 +10,15 @@ spec:
     loadBalancer:
       simple: LEAST_CONN
     outlierDetection:
-      consecutiveGatewayErrors: 5
+      consecutiveGatewayErrors: 20
       interval: 10s
-      baseEjectionTime: 120s
-      maxEjectionPercent: 100
+      baseEjectionTime: 30s
+      maxEjectionPercent: 50
+    connectionPool:
+      tcp:
+        maxConnections: 100
+      http:
+        http1MaxPendingRequests: 100
+        maxRequestsPerConnection: 1000
     tls:
       mode: ISTIO_MUTUAL
