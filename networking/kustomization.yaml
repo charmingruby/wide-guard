@@ -1,5 +1,5 @@
 # yaml-language-server: $schema=none
 resources:
   - shared
-  - pinglet-a
-  - pinglet-b
+  - client
+  - server

@@ -1,3 +1,3 @@
 resources:
-  - pinglet-a.yaml
-  - pinglet-b.yaml
+  - client.yaml
+  - server.yaml

@@ -2,7 +2,7 @@
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: pinglet-b
+  name: server
   labels:
     istio.io/dataplane-mode: ambient
-    istio.io/use-waypoint: pinglet-waypoint
+    istio.io/use-waypoint: server-waypoint

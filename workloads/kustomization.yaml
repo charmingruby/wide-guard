@@ -1,4 +1,4 @@
 # yaml-language-server: $schema=none
 resources:
-  - overlays/pinglet-a
-  - overlays/pinglet-b
+  - overlays/client
+  - overlays/server

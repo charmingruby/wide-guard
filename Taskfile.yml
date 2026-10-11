@@ -45,10 +45,10 @@ tasks:
     cmd: kubectl get crd gateways.gateway.networking.k8s.io &> /dev/null || kubectl kustomize "github.com/kubernetes-sigs/gateway-api/config/crd?ref=v1.6.0" | kubectl apply -f -
   load-test:
     desc: "Runs a simple load test on pinglets to check o11y on Kiali"
-    cmd: kubectl run -it fortio -n pinglet-a --rm --image=fortio/fortio -- load -c 32 -qps 8000 -t 60s http://pinglet.pinglet-a/api/healthz
+    cmd: kubectl run -it fortio -n client --rm --image=fortio/fortio -- load -c 32 -qps 8000 -t 60s http://pinglet.client/api/healthz
   load-test-ping:
     desc: "Runs a pingpong load test to check o11y on Kiali"
-    cmd: kubectl run -it fortio -n pinglet-{{.from}} --rm --image=fortio/fortio --overrides='{"spec":{"serviceAccountName":"pinglet"}}' -- load -c 32 -qps 8000 -t 60s -content-type "application/json" -payload '{"url":"http://pinglet.pinglet-{{.to}}.svc.cluster.local/api","path":"/pong"}' http://pinglet.pinglet-{{.from}}.svc.cluster.local/api/ping
+    cmd: kubectl run -it fortio -n {{.from}} --rm --image=fortio/fortio --overrides='{"spec":{"serviceAccountName":"pinglet"}}' -- load -c 32 -qps 8000 -t 60s -content-type "application/json" -payload '{"url":"http://pinglet.{{.to}}.svc.cluster.local/api","path":"/pong"}' http://pinglet.{{.from}}.svc.cluster.local/api/ping
   default:
     desc: "Scaffolds cluster, applying all needed infrastructure and manifests"
     cmds:

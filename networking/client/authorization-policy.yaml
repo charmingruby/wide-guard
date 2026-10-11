@@ -6,12 +6,12 @@ spec:
   targetRefs:
     - kind: Gateway
       group: gateway.networking.k8s.io
-      name: pinglet-waypoint
+      name: client-waypoint
   action: ALLOW
   rules:
     - from:
         - source:
-            serviceAccounts: [pinglet-a/pinglet]
+            serviceAccounts: [client/pinglet]
       to:
         - operation:
             ports: ["80"]
@@ -19,17 +19,17 @@ spec:
 apiVersion: security.istio.io/v1
 kind: AuthorizationPolicy
 metadata:
-  name: allow-from-b
+  name: allow-from-server
 spec:
   targetRefs:
     - kind: Gateway
       group: gateway.networking.k8s.io
-      name: pinglet-waypoint
+      name: client-waypoint
   action: ALLOW
   rules:
     - from:
         - source:
-            serviceAccounts: [pinglet-b/pinglet]
+            serviceAccounts: [server/pinglet]
       to:
         - operation:
             methods: [GET]

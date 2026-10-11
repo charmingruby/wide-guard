@@ -1,9 +1,9 @@
 # yaml-language-server: $schema=none
-namespace: pinglet-a
+namespace: server
 labels:
   - pairs:
       app.kubernetes.io/instance: pinglet
-      app.kubernetes.io/version: a
+      app.kubernetes.io/version: server
     includeSelectors: true
 
 resources:
@@ -13,7 +13,7 @@ configMapGenerator:
   - name: config
     literals:
       - PORT=4000
-      - ID=a1
+      - ID=server1
       - IS_AVAILABLE=true
       - PING_DELAY_MS=0
       - PONG_DELAY_MS=0
